@@ -17,22 +17,32 @@ def main():
     kk_rct = kk_img.get_rect()
     kk_rct.center = 300,200
     
+    a=0
+    b=0
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0,-1))
-        if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0,+1))
-        if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
-        if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((+1,0))
+            a=0
+            b=-1
+            # kk_rct.move_ip((0,-1))
+        elif key_lst[pg.K_DOWN]:
+            a=0
+            b=+1
+            # kk_rct.move_ip((0,+1))
+        # elif key_lst[pg.K_LEFT]:
+            # kk_rct.move_ip((-1,0))
+        elif key_lst[pg.K_RIGHT]:
+            a=+1
+            b=0
+            # kk_rct.move_ip((+1,0))
         else:
-            kk_rct.move_ip((-1,0))
-    
+            a=-1
+            b=0
+            # kk_rct.move_ip((-1,0))
+        kk_rct.move_ip(a,b)
         x=tmr%3200
 
         screen.blit(bg_img, [-x, 0])
